@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head">
+    <title>UsertoolParam</title>
+</head>
+<body>
+<nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
+<div class="container">
+    <h1>Liste des paramètres d'utilisateurs</h1>
+
+    <div class="table-responsive">
+        <table class="table table-stripped">
+            <thead class="thead-light">
+            <tr class="d-flex">
+                <th scope="col">iDParam</th>
+                <th scope="col" >paramname1</th>
+                <th scope="col">paramvalue1</th>
+                <th scope="col">description1</th>
+                <th scope="col">paramname2</th>
+                <th scope="col" >paramvalue2</th>
+                <th scope="col">description2</th>
+                <th scope="col">paramname3</th>
+                <th scope="col">paramvalue3</th>
+                <th scope="col" >description3</th>
+                <th scope="col">paramname4</th>
+                <th scope="col">paramvalue4</th>
+                <th scope="col" >description4</th>
+                <th scope="col">username</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="utp: ${allUsertoolparam}" class="d-flex">
+                <td scope="row" th:text="${utp.iDParam}"></td>
+                <td th:text="${utp.paramname1}"></td>
+                <td th:text="${utp.paramvalue1}"></td>
+                <td th:text="${utp.description1}"></td>
+                <td th:text="${utp.paramname2}"></td>
+                <td th:text="${utp.paramvalue2}"></td>
+                <td th:text="${utp.description2}"></td>
+                <td th:text="${utp.paramname3}"></td>
+                <td th:text="${utp.paramvalue3}"></td>
+                <td th:text="${utp.description3}"></td>
+                <td th:text="${utp.paramname4}"></td>
+                <td th:text="${utp.paramvalue4}"></td>
+                <td th:text="${utp.description4}"></td>
+                <td th:text="${utp.username}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head">
+    <title>Activité</title>
+</head>
+<body>
+<nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
+<div class="container">
+    <h1>Liste des activités</h1>
+
+    <div class="table-responsive">
+        <table class="table table-stripped">
+            <thead class="thead-light">
+            <tr class="d-flex">
+                <th scope="col" class="col-3">iDAct</th>
+                <th scope="col" class="col-3">titre</th>
+                <th scope="col" class="col-3">typeAct</th>
+                <th scope="col" class="col-3">iDCat</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="activite: ${allActivite}" class="d-flex">
+                <td scope="row" th:text="${activite.iDAct}" class="col-3"></td>
+                <td th:text="${activite.titre}" class="col-3"></td>
+                <td th:text="${activite.typeAct}" class="col-3"></td>
+                <td th:text="${activite.iDCat}" class="col-3"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
