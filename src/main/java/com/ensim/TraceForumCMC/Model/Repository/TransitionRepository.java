@@ -1,8 +1,6 @@
 package com.ensim.TraceForumCMC.Model.Repository;
 
-import com.ensim.TraceForumCMC.Model.Interfaces.TitreAttribut;
 import com.ensim.TraceForumCMC.Model.Transition;
-import com.ensim.TraceForumCMC.Model.Interfaces.UtilisateurTitreAttribut;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -27,10 +25,6 @@ public interface TransitionRepository extends CrudRepository<Transition, String>
     @Query(value = "SELECT DISTINCT Utilisateur FROM transition",
             nativeQuery = true)
     List<String> getUtilisateurs();
-
-    @Query(value = "SELECT DISTINCT Titre FROM transition ORDER BY transition.Titre ASC",
-            nativeQuery = true)
-    List<String> getTitre();
 
     @Query(value = "SELECT DISTINCT Attribut FROM transition WHERE Utilisateur = :utilisateur AND Attribut NOT LIKE '%,%' AND Attribut LIKE '%IDForum=%' ORDER BY transition.Attribut ASC",
             nativeQuery = true)

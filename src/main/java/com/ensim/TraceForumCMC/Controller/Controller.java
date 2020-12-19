@@ -1,7 +1,5 @@
 package com.ensim.TraceForumCMC.Controller;
 
-import com.ensim.TraceForumCMC.Model.Activite;
-import com.ensim.TraceForumCMC.Model.Interfaces.TitreAttribut;
 import com.ensim.TraceForumCMC.Model.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -9,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -25,20 +24,6 @@ public class Controller {
     UserfilesRepository userfilesRepository;
     @Autowired
     UsertoolParamRepository usertoolParamRepository;
-
-    /*
-    Connexion : 0 point
-    Afficher une structure : 1 point
-    Répondre à un message : 2 points
-    Afficher le fil de discussion : 1 point
-    Poster un nouveau message : 2 points
-    Afficher le contenu d’un message : 1 point
-    Bouger la scrollbar : 0 point
-    Citer un message : 2 points
-    Upload un fichier : 3 points
-    Download un fichier : 2 points
-    Afficher une structure de cours : 1 point
-     */
 
     @GetMapping("/")
     public String home() {
@@ -60,24 +45,40 @@ public class Controller {
         model.addAttribute("forums", forums);
 
         // Activites
-        List<String> activites = transitionRepository.getTitre();
-        model.addAttribute("activites", activites);
-
-        // Map for the number of actions
-        Map<String, Integer> nbActions = new HashMap<>();
-        activites.forEach(s -> nbActions.put(s, 0));
+        /*
+            Connexion : 0 point
+            Afficher une structure : 1 point
+            Répondre à un message : 2 points
+            Afficher le fil de discussion : 1 point
+            Poster un nouveau message : 2 points
+            Afficher le contenu d’un message : 1 point
+            Bouger la scrollbar : 0 point
+            Citer un message : 2 points
+            Upload un fichier : 3 points
+            Download un fichier : 2 points
+            Afficher une structure de cours : 1 point
+         */
 
         // Actions
-        Map<String, Map<String, Integer>> nbActionsByForum = new HashMap<>();
+        Map<String, Integer> nbActionsByForum = new HashMap<>();
         for (String forum:
                 forums) {
             List<String> actions = transitionRepository.getActionsByIDForum(user, '%'+forum+'%');
-            nbActionsByForum.put(forum, new HashMap<>(nbActions));
+            int somme = 0;
             for (String act:
                  actions) {
-                nbActionsByForum.get(forum)
-                        .put(act,nbActionsByForum.get(forum).get(act)+1);
+                int coeff = 0;
+
+                if( act.equals("Afficher une structure") || act.equals("Afficher le fil de discussion") || act.equals("Afficher le contenu d’un message") || act.equals("Afficher une structure de cours") )
+                    coeff = 1;
+                if( act.equals("Répondre à un message") || act.equals("Poster un nouveau message") || act.equals("Citer un message") || act.equals("Download un fichier") )
+                    coeff = 2;
+                if( act.equals("Upload un fichier") )
+                    coeff = 3;
+
+                somme += coeff;
             }
+            nbActionsByForum.put(forum, somme);
         }
         model.addAttribute("nbActions", nbActionsByForum.values());
 
