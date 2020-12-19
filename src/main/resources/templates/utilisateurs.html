@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="head"></head>
+    <head>
+        <title>Utilisateurs</title>
+    </head>
+    <body>
+        <nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark mb-3"></nav>
+        <div class="container">
+            <h1>Liste des utilisateurs</h1>
+
+            <div class="table-responsive">
+                <table class="table table-stripped">
+                    <thead class="thead-light">
+                        <tr class="d-flex">
+                            <th scope="col" class="col-4">#</th>
+                            <th scope="col" class="col-4">Utilisateur</th>
+                            <th scope="col" class="col-4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="user, iter: ${allUsers}" class="d-flex">
+                            <td scope="row" th:text="${iter.count}" class="col-4"></td>
+                            <td th:text="${user}" class="col-4"></td>
+                            <td class="col-4">
+                                <a class="btn btn-primary" role="button" th:href="${'/utilisateursDetails?user=' + user}">Voir le détail</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

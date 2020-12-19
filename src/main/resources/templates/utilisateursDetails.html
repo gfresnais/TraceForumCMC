@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="head"></head>
+    <head>
+        <title>Étudiants</title>
+    </head>
+    <body>
+        <nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark mb-3"></nav>
+        <div class="container">
+
+            <a class="btn btn-secondary mb-3" role="button" th:href="@{/utilisateurs}">Retour à la liste des utilisateurs</a>
+
+            <h1 th:utext="${'Détail pour ' + utilisateur}"></h1>
+
+            <div class="table-responsive">
+                <table class="table table-stripped">
+                    <thead class="thead-light">
+                        <tr class="d-flex">
+                            <th scope="col" class="col-4">#</th>
+                            <th scope="col" class="col-4">Titre</th>
+                            <th scope="col" class="col-4">Attribut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="action, iter: ${allActions}" class="d-flex">
+                            <td scope="row" th:text="${iter.count}" class="col-4"></td>
+                            <td th:text="${action.titre}" class="col-4"></td>
+                            <td th:text="${action.attribut}" class="col-4"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
