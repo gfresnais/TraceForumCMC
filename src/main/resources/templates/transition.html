@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="head">
-    <title>Transition</title>
-</head>
-<body>
-<nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
-<div class="container">
-    <h1>Liste des transitions</h1>
+    <head th:insert="head"></head>
+    <head>
+        <title>Transition</title>
+    </head>
+    <body>
+        <nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
+        <div class="container">
+            <h1>Liste des transitions</h1>
 
-    <div class="table-responsive">
-        <table class="table table-stripped">
-            <thead class="thead-light">
-            <tr class="d-flex">
-                <th scope="col" class="col-1">iDTran</th>
-                <th scope="col" class="col-1">utilisateur</th>
-                <th scope="col" class="col-2">titre</th>
-                <th scope="col" class="col-2">attribut</th>
-                <th scope="col" class="col-1">date</th>
-                <th scope="col" class="col-1">heure</th>
-                <th scope="col" class="col-1">delai</th>
-                <th scope="col" class="col-1">refTran</th>
-                <th scope="col" class="col-1">commentaire</th>
-                <th scope="col" class="col-1">utilisateur2</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="transition: ${allTransition}" class="d-flex">
-                <td scope="row" th:text="${transition.iDTran}" class="col-1"></td>
-                <td th:text="${transition.utilisateur}" class="col-1"></td>
-                <td th:text="${transition.titre}" class="col-2"></td>
-                <td th:text="${transition.attribut}" class="col-2 text-break"></td>
-                <td th:text="${transition.date}" class="col-1"></td>
-                <td th:text="${transition.heure}" class="col-1"></td>
-                <td th:text="${transition.delai}" class="col-1"></td>
-                <td th:text="${transition.refTran}" class="col-1"></td>
-                <td th:text="${transition.commentaire}" class="col-1"></td>
-                <td th:text="${transition.utilisateur2}" class="col-1"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-</body>
+            <div class="table-responsive">
+                <table class="table table-stripped">
+                    <thead class="thead-light">
+                    <tr class="d-flex">
+                        <th scope="col" class="col-1">iDTran</th>
+                        <th scope="col" class="col-1">utilisateur</th>
+                        <th scope="col" class="col-2">titre</th>
+                        <th scope="col" class="col-2">attribut</th>
+                        <th scope="col" class="col-1">date</th>
+                        <th scope="col" class="col-1">heure</th>
+                        <th scope="col" class="col-1">delai</th>
+                        <th scope="col" class="col-1">refTran</th>
+                        <th scope="col" class="col-1">commentaire</th>
+                        <th scope="col" class="col-1">utilisateur2</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="transition: ${allTransition}" class="d-flex">
+                        <td scope="row" th:text="${transition.iDTran}" class="col-1"></td>
+                        <td th:text="${transition.utilisateur}" class="col-1"></td>
+                        <td th:text="${transition.titre}" class="col-2"></td>
+                        <td th:text="${transition.attribut}" class="col-2 text-break"></td>
+                        <td th:text="${transition.date}" class="col-1"></td>
+                        <td th:text="${transition.heure}" class="col-1"></td>
+                        <td th:text="${transition.delai}" class="col-1"></td>
+                        <td th:text="${transition.refTran}" class="col-1"></td>
+                        <td th:text="${transition.commentaire}" class="col-1"></td>
+                        <td th:text="${transition.utilisateur2}" class="col-1"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>

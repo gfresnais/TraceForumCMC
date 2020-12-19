@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="head">
-    <title>Userfiles</title>
-</head>
-<body>
-<nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
-<div class="container">
-    <h1>Liste des fichiers d'utilisateurs</h1>
+    <head th:insert="head"></head>
+    <head>
+        <title>Userfiles</title>
+    </head>
+    <body>
+        <nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
+        <div class="container">
+            <h1>Liste des fichiers d'utilisateurs</h1>
 
-    <div class="table-responsive">
-        <table class="table table-stripped">
-            <thead class="thead-light">
-            <tr class="d-flex">
-                <th scope="col">iD</th>
-                <th scope="col" >user</th>
-                <th scope="col">iDForum</th>
-                <th scope="col">iDMsg</th>
-                <th scope="col">filenameo</th>
-                <th scope="col" >filenamer</th>
-                <th scope="col">filetype</th>
-                <th scope="col">filesize</th>
-                <th scope="col">dateupload</th>
-                <th scope="col" >timeupload</th>
-                <th scope="col">dateLa</th>
-                <th scope="col">timeLa</th>
-                <th scope="col" >nbdownload</th>
-                <th scope="col">filestatus</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="userfile: ${allUserfiles}" class="d-flex">
-                <td scope="row" th:text="${userfile.iD}"></td>
-                <td th:text="${userfile.user}"></td>
-                <td th:text="${userfile.iDForum}"></td>
-                <td th:text="${userfile.iDMsg}"></td>
-                <td th:text="${userfile.filenameo}"></td>
-                <td th:text="${userfile.filenamer}"></td>
-                <td th:text="${userfile.filetype}"></td>
-                <td th:text="${userfile.filesize}"></td>
-                <td th:text="${userfile.dateupload}"></td>
-                <td th:text="${userfile.timeupload}"></td>
-                <td th:text="${userfile.dateLa}"></td>
-                <td th:text="${userfile.timeLa}"></td>
-                <td th:text="${userfile.nbdownload}"></td>
-                <td th:text="${userfile.filestatus}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-</body>
+            <div class="table-responsive">
+                <table class="table table-stripped">
+                    <thead class="thead-light">
+                    <tr class="d-flex">
+                        <th scope="col" class="col-1">iD</th>
+                        <th scope="col" class="col-1">user</th>
+                        <th scope="col" class="col-1">iDForum</th>
+                        <th scope="col" class="col-1">iDMsg</th>
+                        <th scope="col" class="col-1">filenameo</th>
+                        <th scope="col" class="col-1">filenamer</th>
+                        <th scope="col" class="col-1">filetype</th>
+                        <th scope="col" class="col-1">filesize</th>
+                        <th scope="col" class="col-1">dateupload</th>
+                        <th scope="col" class="col-1">timeupload</th>
+                        <th scope="col" class="col-1">dateLa</th>
+                        <th scope="col" class="col-1">timeLa</th>
+                        <th scope="col" class="col-1">nbdownload</th>
+                        <th scope="col" class="col-1">filestatus</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="userfile: ${allUserfiles}" class="d-flex">
+                        <td scope="row" th:text="${userfile.iD}" class="col-1"></td>
+                        <td th:text="${userfile.user}" class="col-1 text-break"></td>
+                        <td th:text="${userfile.iDForum}" class="col-1"></td>
+                        <td th:text="${userfile.iDMsg}" class="col-1"></td>
+                        <td th:text="${userfile.filenameo}" class="col-1 text-break"></td>
+                        <td th:text="${userfile.filenamer}" class="col-1 text-break"></td>
+                        <td th:text="${userfile.filetype}" class="col-1"></td>
+                        <td th:text="${userfile.filesize}" class="col-1"></td>
+                        <td th:text="${userfile.dateupload}" class="col-1"></td>
+                        <td th:text="${userfile.timeupload}" class="col-1"></td>
+                        <td th:text="${userfile.dateLa}" class="col-1"></td>
+                        <td th:text="${userfile.timeLa}" class="col-1"></td>
+                        <td th:text="${userfile.nbdownload}" class="col-1"></td>
+                        <td th:text="${userfile.filestatus}" class="col-1"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>

@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="head">
-    <title>Catégorie</title>
-</head>
-<body>
-<nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
-<div class="container">
-    <h1>Liste des catégories</h1>
+    <head th:insert="head"></head>
+    <head>
+        <title>Catégorie</title>
+    </head>
+    <body>
+        <nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
+        <div class="container">
+            <h1>Liste des catégories</h1>
 
-    <div class="table-responsive">
-        <table class="table table-stripped">
-            <thead class="thead-light">
-            <tr class="d-flex">
-                <th scope="col" class="col-6">iDCat</th>
-                <th scope="col" class="col-6">titre</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="categorie: ${allCategorie}" class="d-flex">
-                <td scope="row" th:text="${categorie.iDCat}" class="col-6"></td>
-                <td th:text="${categorie.titre}" class="col-6"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-</body>
+            <div class="table-responsive">
+                <table class="table table-stripped">
+                    <thead class="thead-light">
+                    <tr class="d-flex">
+                        <th scope="col" class="col-6">iDCat</th>
+                        <th scope="col" class="col-6">titre</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="categorie: ${allCategorie}" class="d-flex">
+                        <td scope="row" th:text="${categorie.iDCat}" class="col-6"></td>
+                        <td th:text="${categorie.titre}" class="col-6"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>

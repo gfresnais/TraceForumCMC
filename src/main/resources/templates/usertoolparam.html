@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="head">
-    <title>UsertoolParam</title>
-</head>
-<body>
-<nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
-<div class="container">
-    <h1>Liste des paramètres d'utilisateurs</h1>
+    <head th:insert="head"></head>
+    <head>
+        <title>UsertoolParam</title>
+    </head>
+    <body>
+        <nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
+        <div class="container">
+            <h1>Liste des paramètres d'utilisateurs</h1>
 
-    <div class="table-responsive">
-        <table class="table table-stripped">
-            <thead class="thead-light">
-            <tr class="d-flex">
-                <th scope="col">iDParam</th>
-                <th scope="col" >paramname1</th>
-                <th scope="col">paramvalue1</th>
-                <th scope="col">description1</th>
-                <th scope="col">paramname2</th>
-                <th scope="col" >paramvalue2</th>
-                <th scope="col">description2</th>
-                <th scope="col">paramname3</th>
-                <th scope="col">paramvalue3</th>
-                <th scope="col" >description3</th>
-                <th scope="col">paramname4</th>
-                <th scope="col">paramvalue4</th>
-                <th scope="col" >description4</th>
-                <th scope="col">username</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="utp: ${allUsertoolparam}" class="d-flex">
-                <td scope="row" th:text="${utp.iDParam}"></td>
-                <td th:text="${utp.paramname1}"></td>
-                <td th:text="${utp.paramvalue1}"></td>
-                <td th:text="${utp.description1}"></td>
-                <td th:text="${utp.paramname2}"></td>
-                <td th:text="${utp.paramvalue2}"></td>
-                <td th:text="${utp.description2}"></td>
-                <td th:text="${utp.paramname3}"></td>
-                <td th:text="${utp.paramvalue3}"></td>
-                <td th:text="${utp.description3}"></td>
-                <td th:text="${utp.paramname4}"></td>
-                <td th:text="${utp.paramvalue4}"></td>
-                <td th:text="${utp.description4}"></td>
-                <td th:text="${utp.username}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-</body>
+            <div class="table-responsive">
+                <table class="table table-stripped">
+                    <thead class="thead-light">
+                    <tr class="d-flex">
+                        <th scope="col" class="col-1">iDParam</th>
+                        <th scope="col" class="col-1">paramname1</th>
+                        <th scope="col" class="col-1">paramvalue1</th>
+                        <th scope="col" class="col-1">description1</th>
+                        <th scope="col" class="col-1">paramname2</th>
+                        <th scope="col" class="col-1">paramvalue2</th>
+                        <th scope="col" class="col-1">description2</th>
+                        <th scope="col" class="col-1">paramname3</th>
+                        <th scope="col" class="col-1">paramvalue3</th>
+                        <th scope="col" class="col-1">description3</th>
+                        <th scope="col" class="col-1">paramname4</th>
+                        <th scope="col" class="col-1">paramvalue4</th>
+                        <th scope="col" class="col-1">description4</th>
+                        <th scope="col" class="col-1">username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="utp: ${allUsertoolparam}" class="d-flex">
+                        <td scope="row" th:text="${utp.iDParam}" class="col-1"></td>
+                        <td th:text="${utp.paramname1}" class="col-1"></td>
+                        <td th:text="${utp.paramvalue1}" class="col-1"></td>
+                        <td th:text="${utp.description1}" class="col-1"></td>
+                        <td th:text="${utp.paramname2}" class="col-1"></td>
+                        <td th:text="${utp.paramvalue2}" class="col-1"></td>
+                        <td th:text="${utp.description2}" class="col-1"></td>
+                        <td th:text="${utp.paramname3}" class="col-1"></td>
+                        <td th:text="${utp.paramvalue3}" class="col-1"></td>
+                        <td th:text="${utp.description3}" class="col-1"></td>
+                        <td th:text="${utp.paramname4}" class="col-1"></td>
+                        <td th:text="${utp.paramvalue4}" class="col-1"></td>
+                        <td th:text="${utp.description4}" class="col-1"></td>
+                        <td th:text="${utp.username}" class="col-1"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>
