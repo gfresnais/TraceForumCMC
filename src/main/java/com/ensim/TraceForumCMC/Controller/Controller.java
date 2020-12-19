@@ -1,10 +1,14 @@
 package com.ensim.TraceForumCMC.Controller;
 
+import com.ensim.TraceForumCMC.Model.Activite;
+import com.ensim.TraceForumCMC.Model.Interfaces.TitreAttribut;
 import com.ensim.TraceForumCMC.Model.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.*;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -50,7 +54,33 @@ public class Controller {
     @GetMapping("/utilisateursDetails")
     public String etudiantsDetails(@RequestParam String user, Model model) {
         model.addAttribute("utilisateur", user);
-        model.addAttribute("allActions", transitionRepository.getTitreAttribut(user));
+
+        // Forums
+        List<String> forums = transitionRepository.getIDForum(user);
+        model.addAttribute("forums", forums);
+
+        // Activites
+        List<String> activites = transitionRepository.getTitre();
+        model.addAttribute("activites", activites);
+
+        // Map for the number of actions
+        Map<String, Integer> nbActions = new HashMap<>();
+        activites.forEach(s -> nbActions.put(s, 0));
+
+        // Actions
+        Map<String, Map<String, Integer>> nbActionsByForum = new HashMap<>();
+        for (String forum:
+                forums) {
+            List<String> actions = transitionRepository.getActionsByIDForum(user, '%'+forum+'%');
+            nbActionsByForum.put(forum, new HashMap<>(nbActions));
+            for (String act:
+                 actions) {
+                nbActionsByForum.get(forum)
+                        .put(act,nbActionsByForum.get(forum).get(act)+1);
+            }
+        }
+        model.addAttribute("nbActions", nbActionsByForum.values());
+
         return "utilisateursDetails";
     }
 
