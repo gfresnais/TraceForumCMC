@@ -26,6 +26,14 @@ public interface TransitionRepository extends CrudRepository<Transition, String>
             nativeQuery = true)
     List<String> getUtilisateurs();
 
+    @Query(value = "SELECT DISTINCT Utilisateur FROM transition WHERE Attribut LIKE :idforum",
+            nativeQuery = true)
+    List<String> getUtilisateursByIDForum(String idforum);
+
+    @Query(value = "SELECT DISTINCT Attribut FROM transition WHERE Attribut NOT LIKE '%,%' AND Attribut LIKE '%IDForum=%' ORDER BY transition.Attribut ASC",
+            nativeQuery = true)
+    List<String> getIDForums();
+
     @Query(value = "SELECT DISTINCT Attribut FROM transition WHERE Utilisateur = :utilisateur AND Attribut NOT LIKE '%,%' AND Attribut LIKE '%IDForum=%' ORDER BY transition.Attribut ASC",
             nativeQuery = true)
     List<String> getIDForum(String utilisateur);

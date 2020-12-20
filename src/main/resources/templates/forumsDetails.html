@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:insert="head"></head>
     <head>
-        <title>Détails</title>
+        <title>Forum Détails</title>
         <link rel="stylesheet" href="webjars/chartjs/2.9.3/Chart.css">
         <script src="webjars/chartjs/2.9.3/Chart.min.js"></script>
     </head>
@@ -11,9 +11,9 @@
         <nav th:insert="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark mb-3"></nav>
         <div class="container">
 
-            <a class="btn btn-secondary mb-3" role="button" th:href="@{/utilisateurs}">Retour à la liste des utilisateurs</a>
+            <a class="btn btn-secondary mb-3" role="button" th:href="@{/forums}">Retour à la liste des forums</a>
 
-            <h1 th:utext="${'Détail pour ' + utilisateur}"></h1>
+            <h1 th:utext="${'Détail pour ' + forum}"></h1>
 
             <canvas id="graph" width="200" height="200">Your browser does not support the canvas element.</canvas>
             <script th:inline="javascript">
@@ -25,9 +25,9 @@
                     var myChart = new Chart(ctx, {
                     type: 'bar',
                         data: {
-                            labels: /*[[${forums}]]*/,
+                            labels: /*[[${utilisateurs}]]*/,
                             datasets: [{
-                                label: 'Taux de participation par forum',
+                                label: 'Taux de participation par utilisateur',
                                 data: data,
                                 backgroundColor: 'rgba(255,0,0,1)',
                                 borderWidth: 1

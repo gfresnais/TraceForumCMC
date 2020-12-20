@@ -31,13 +31,13 @@ public class Controller {
     }
 
     @GetMapping("/utilisateurs")
-    public String etudiants(Model model) {
+    public String utilisateurs(Model model) {
         model.addAttribute("allUsers", transitionRepository.getUtilisateurs());
         return "utilisateurs";
     }
 
     @GetMapping("/utilisateursDetails")
-    public String etudiantsDetails(@RequestParam String user, Model model) {
+    public String utilisateursDetails(@RequestParam String user, Model model) {
         model.addAttribute("utilisateur", user);
 
         // Forums
@@ -83,6 +83,45 @@ public class Controller {
         model.addAttribute("nbActions", nbActionsByForum.values());
 
         return "utilisateursDetails";
+    }
+
+    @GetMapping("/forums")
+    public String forums(Model model) {
+        model.addAttribute("allForums", transitionRepository.getIDForums());
+        return "forums";
+    }
+
+    @GetMapping("/forumsDetails")
+    public String forumsDetails(@RequestParam String forum, Model model) {
+        model.addAttribute("forum", forum);
+
+        // Utilisateurs
+        List<String> utilisateurs = transitionRepository.getUtilisateursByIDForum('%'+forum+'%');
+        model.addAttribute("utilisateurs", utilisateurs);
+
+        // Actions
+        Map<String, Integer> nbActionsByUtilisateur = new HashMap<>();
+        for (String utilisateur:
+                utilisateurs) {
+            List<String> actions = transitionRepository.getActionsByIDForum(utilisateur, '%'+forum+'%');
+            int somme = 0;
+            for (String act:
+                    actions) {
+                int coeff = 0;
+
+                if( act.equals("Afficher une structure") || act.equals("Afficher le fil de discussion") || act.equals("Afficher le contenu d’un message") || act.equals("Afficher une structure de cours") )
+                    coeff = 1;
+                if( act.equals("Répondre à un message") || act.equals("Poster un nouveau message") || act.equals("Citer un message") || act.equals("Download un fichier") )
+                    coeff = 2;
+                if( act.equals("Upload un fichier") )
+                    coeff = 3;
+
+                somme += coeff;
+            }
+            nbActionsByUtilisateur.put(utilisateur, somme);
+        }
+        model.addAttribute("nbActions", nbActionsByUtilisateur.values());
+        return "forumsDetails";
     }
 
     @GetMapping("/activite")
